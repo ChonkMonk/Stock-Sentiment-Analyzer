@@ -7,6 +7,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 import yfinance as yf
+# moving from vader to BERT for better sentiment analysis
 
 """
 TODO:

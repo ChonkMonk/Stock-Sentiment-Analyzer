@@ -1,14 +1,14 @@
-import vader
+# import vader
 import re
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import date
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+# from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 
 finviz_url = "https://finviz.com/quote.ashx?t="
-tickers = ['XLK', 'META', 'MSFT', 'NVDA']
+tickers = ['MSCI']
 
 news_tables = {}
 
@@ -55,31 +55,31 @@ for ticker, news_table in news_tables.items():
 
         parsed_data.append([ticker, date_article, time, title])
 
-# print(parsed_data)
+print(parsed_data)
 
 df = pd.DataFrame(parsed_data, columns = ['ticker', 'date', 'time', 'title'])
 
-vader = SentimentIntensityAnalyzer()
+# vader = SentimentIntensityAnalyzer()
 
-f = lambda title: vader.polarity_scores(title)['compound']
-df['compound'] = df['title'].apply(f)
-df['date'] = pd.to_datetime(df['date']).dt.date
+# f = lambda title: vader.polarity_scores(title)['compound']
+# df['compound'] = df['title'].apply(f)
+# df['date'] = pd.to_datetime(df['date']).dt.date
 
-print(df.head)
+# print(df.head)
 
-today = date.today()
-month, year = (today.month - 1, today.year) if today.month != 12 else (12, today.year - 1) 
-start_date = today.replace(day = today.day, month = month, year = year)
+# today = date.today()
+# month, year = (today.month - 1, today.year) if today.month != 12 else (12, today.year - 1) 
+# start_date = today.replace(day = today.day, month = month, year = year)
 
-mean_df = df.groupby(['ticker', 'date']).mean(['compound'])
-mean_df = mean_df.unstack()
-mean_df = mean_df.xs('compound', axis = 'columns').transpose()
-mean_df = mean_df[mean_df.index > start_date]
+# mean_df = df.groupby(['ticker', 'date']).mean(['compound'])
+# mean_df = mean_df.unstack()
+# mean_df = mean_df.xs('compound', axis = 'columns').transpose()
+# mean_df = mean_df[mean_df.index > start_date]
 
-print(mean_df.head)
+# print(mean_df.head)
 
-plt.figure(figsize = (10,8))
-mean_df.plot(kind = 'bar')
-plt.show()
+# plt.figure(figsize = (10,8))
+# mean_df.plot(kind = 'bar')
+# plt.show()
 
 # print(mean_df)
