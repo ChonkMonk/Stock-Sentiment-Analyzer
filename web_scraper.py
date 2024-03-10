@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 def web_scraper():
     finviz_url = "https://finviz.com/quote.ashx?t="
-    ticker = input('What Ticker Would you Like to Check the Sentiment of')
+    ticker = input('What Ticker Would you Like to Check the Sentiment of?\n')
 
     news_tables = {}
 
@@ -42,7 +42,7 @@ def web_scraper():
 
             parsed_data.append([ticker, date_article, time, title])
 
-    print(parsed_data)
+    # print(parsed_data)
 
     df = pd.DataFrame(parsed_data, columns = ['ticker', 'date', 'time', 'title'])
     return df
