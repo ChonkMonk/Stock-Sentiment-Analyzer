@@ -10,11 +10,13 @@ def Sentiment_Analysis(df):
     df['date'] = pd.to_datetime(df['date']).dt.date
     
     df['Sentiment Scores'] = df['title'].apply(lambda title: sentiment_score(title, tokenizer, model))
-    mean_sentiment = df.groupby(['date']).mean(['Sentiment Scores'])
+    mean_sentiment = df['Sentiment Scores'].mean()
+    mean_sentiment_date = df.groupby(['date']).mean(['Sentiment Scores'])
 
-    print(mean_sentiment.head())
-    overall_sentiment_series = mean_sentiment.mean()
-    overall_sentiment = overall_sentiment_series.iloc[0]
+    print(mean_sentiment_date.tail(10))
+    # overall_sentiment_series = mean_sentiment.mean()
+    # overall_sentiment = overall_sentiment_series.iloc[0]
+    overall_sentiment = mean_sentiment
 
     if overall_sentiment >= 3:
         print(f'Overall Sentiment has a rating of: {overall_sentiment}')
