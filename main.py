@@ -8,7 +8,7 @@ Can Also have cool title Screen Showing the things built using Tkinter if we hav
 
 Weight based on mean for every article rather than by day
 """
-from Sentiment_Analysis_New import Sentiment_Analysis
+from Sentiment_Analysis import Sentiment_Analysis
 from web_scraper import web_scraper
 
 def main():

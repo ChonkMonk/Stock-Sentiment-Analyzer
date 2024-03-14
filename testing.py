@@ -25,13 +25,19 @@ def sentiment_score(title, nlp):
 df['Sentiment Label'] = df['title'].apply(lambda title: sentiment_label(title, nlp))
 df['Sentiment Score'] = df['title'].apply(lambda title: sentiment_score(title, nlp))
 print(df.head())
-mean_sentiment = df.groupby(['Sentiment Label'])['Sentiment Score'].mean()
-mean_sent_int = max()
-mean_sentiment_date = df.groupby(['date']).mean(['Sentiment Scores'])
+mean_sentiment = df.groupby(['Sentiment Label'])['Sentiment Score'].mean().reset_index()
+max_score_idx = mean_sentiment['Sentiment Score'].idxmax()
+mean_sent_lab = mean_sentiment.loc[max_score_idx, 'Sentiment Label']
+# showing sentiments for every day is for future features
+# mean_sentiment_date = df.groupby(['date']).mean(['Sentiment Scores'])
+# print(mean_sentiment_date)
 
-print(mean_sentiment_date)
-print(mean_sentiment)
+# print(mean_sentiment)
+print(f'AMD Sentiment Label:')
+print(mean_sent_lab)
+print(f'With a Score of:')
+print(mean_sentiment.iloc[max_score_idx]['Sentiment Score'])
 
-moon = sentiment_score('NVDIA STOCKS TO THE MOON', nlp)
+# moon = sentiment_score('NVDIA STOCKS TO THE MOON', nlp)
 
-print(moon)
+# print(moon)

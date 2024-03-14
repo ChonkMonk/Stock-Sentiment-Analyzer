@@ -45,7 +45,7 @@ def web_scraper():
     # print(parsed_data)
 
     df = pd.DataFrame(parsed_data, columns = ['ticker', 'date', 'time', 'title'])
-    return df
+    return df, ticker
 
 # vader = SentimentIntensityAnalyzer()
 
