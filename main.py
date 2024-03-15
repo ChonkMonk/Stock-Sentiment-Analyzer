@@ -12,6 +12,7 @@ from Sentiment_Analysis import Sentiment_Analysis
 from web_scraper import web_scraper
 
 def main():
-    Sentiment_Analysis(web_scraper())
+    df, ticker = web_scraper()
+    Sentiment_Analysis(df, ticker)
 
 main()
