@@ -1,34 +1,24 @@
 """
 TODO:
-Build Sentiment Analysis
-Run tokens from input to Sentiment Analysis
 Return Graph Showing how the sentiment of the stock has been doing, mostly for verification of validity of Model
-Return Sentiment and Cool Message for Buy or No Buy
-Can Also have cool title Screen Showing the things built using Tkinter if we have time
+Use ML to adjust weights such that it fits stock price data?
 
 Weight based on mean for every article rather than by day
 """
-from Sentiment_Analyzer import Sentiment_Analysis1, Sentiment_Analysis2
+from Sentiment_Analyzer import Sentiment_Analyzer
+from transformers import BertTokenizer, BertForSequenceClassification, AutoTokenizer, AutoModelForSequenceClassification
 from web_scraper import web_scraper
+
+model1 = BertForSequenceClassification.from_pretrained("ProsusAI/finbert",num_labels=3)
+tokenizer1 = BertTokenizer.from_pretrained("ProsusAI/finbert")
+model2 = AutoModelForSequenceClassification.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
+tokenizer2 = AutoTokenizer.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
+
+Analyzer1 = Sentiment_Analyzer(weighting = 1, model = model1, tokenizer = tokenizer1)
+Analyzer2 = Sentiment_Analyzer(weighting = 1, model = model2, tokenizer = tokenizer2)
 
 def main():
     df, ticker = web_scraper()
-    weight1 = 1
-    weight2 = 2
-
-    net_sent_score = weight1*Sentiment_Analysis1(df)
-    net_sent_score += weight2*Sentiment_Analysis2(df)
-
-    if net_sent_score < 0:
-        label = 'Negative'
-    elif net_sent_score == 0:
-        label = 'Neutral'
-    elif net_sent_score > 0:
-        label = 'Positive'
-        
-    print(f'{ticker} Sentiment Label:')
-    print(label)
-    print(f'With a Score of:')
-    print(net_sent_score)
-    
+    Net_sentiment = Analyzer1.analyze(df, ticker) + Analyzer2.analyze(df, ticker)
+    print(Net_sentiment)
 main()

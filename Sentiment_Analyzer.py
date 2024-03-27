@@ -7,67 +7,38 @@ if label is neutral:
 if label is positive:
     total score += positive score
 """
-
 import pandas as pd
-from transformers import BertTokenizer, BertForSequenceClassification, AutoTokenizer, AutoModelForSequenceClassification
 from transformers import pipeline
-import torch
+from web_scraper import web_scraper
 
-def Sentiment_Analysis1(df):
-    model = BertForSequenceClassification.from_pretrained("ProsusAI/finbert",num_labels=3)
-    tokenizer = BertTokenizer.from_pretrained("ProsusAI/finbert")
-    
-    nlp = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
+class Sentiment_Analyzer:
+    def __init__(self, weighting, model, tokenizer):
+        self.weight = weighting
+        self.model = model
+        self.tokenizer = tokenizer
+        self.nlp = pipeline("sentiment-analysis", model=self.model, tokenizer=self.tokenizer)
 
-    def sentiment_label(title, nlp):
+    # theres probably a way to make this code cleaner but idk how to do it ehe~
+    def sentiment_label(self, title, nlp):
         results = nlp(title)
         label = results[0]['label']
         return label
-    # FIX THIS WHEN YOU HAVE TIME
-    def sentiment_score(title, nlp):
+    def sentiment_score(self, title, nlp):
         results = nlp(title)
         score = results[0]['score']
         return score
 
-    df['date'] = pd.to_datetime(df['date']).dt.date
-    
-    df['Sentiment Label'] = df['title'].apply(lambda title: sentiment_label(title, nlp))
-    df['Sentiment Score'] = df['title'].apply(lambda title: sentiment_score(title, nlp))
-    # print(df['Sentiment Label'].value_counts())
-    # print(df.tail(20))
-    net_sent_score = 0
-    for row in range(df.shape[0]):
-        if df.iloc[row]['Sentiment Label'] == 'negative': # negative
-            net_sent_score -= df.iloc[row]['Sentiment Score']
-        elif df.iloc[row]['Sentiment Label'] == 'positive': # positive
-            net_sent_score += df.iloc[row]['Sentiment Score']
-        else: # neutral
-            pass
+    def analyze(self, df, ticker):
+        df['Sentiment Label'] = df['title'].apply(lambda title: self.sentiment_label(title, self.nlp))
+        df['Sentiment Score'] = df['title'].apply(lambda title: self.sentiment_score(title, self.nlp))
+        net_sent_score = 0
+        for row in range(df.shape[0]):
+            if df.iloc[row]['Sentiment Label'] == 'negative': # negative
+                net_sent_score -= df.iloc[row]['Sentiment Score']
+            elif df.iloc[row]['Sentiment Label'] == 'positive': # positive
+                net_sent_score += df.iloc[row]['Sentiment Score']
+            else: # neutral
+                pass
 
-    net_sent_score = net_sent_score / df.shape[0]
-    # net_sent_score += Sentiment_Analysis2(df)
-    return net_sent_score
-
-def Sentiment_Analysis2(df):
-    tokenizer = AutoTokenizer.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
-    model = AutoModelForSequenceClassification.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
-    
-    def sentiment_score(title, tokenizer, model):
-        tokens = tokenizer.encode(title, return_tensors= 'pt')
-        results = model(tokens)
-        scores = int(torch.argmax(results.logits))+1
-        scores_stand = (scores - 3.5452)/2
-        if scores_stand < -1:
-            scores_stand = -1
-        return scores_stand
-    
-    df['date'] = pd.to_datetime(df['date']).dt.date
-
-    df['Sentiment Score'] = df['title'].apply(lambda title: sentiment_score(title, tokenizer, model))
-    mean_sentiment = df.groupby(['date']).mean(['Sentiment Score'])
-
-    print(mean_sentiment.tail())
-    overall_sentiment_series = mean_sentiment.mean()
-    overall_sentiment = overall_sentiment_series.iloc[0]
-    print(overall_sentiment)
-    return overall_sentiment
+        net_sent_score = net_sent_score / df.shape[0]
+        return self.weight*net_sent_score
