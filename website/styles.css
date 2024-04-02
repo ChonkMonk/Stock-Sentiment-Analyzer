@@ -2,6 +2,7 @@ body {
     background-color: white;
     font-family: Roboto, sans-serif;
     margin: 0;
+    width: 100%;
 }
 
 * {
@@ -11,14 +12,29 @@ body {
 div {
     display: block;
 }
-/*Top Nav*/
-.topnav {
-    /* background-color: #585c63; */
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+/*Nav Bars*/
+.navbar {
     background-color: #262626;
     overflow: hidden;
     margin: 0;
     padding: 0;
-    list-style-type: none;
+    list-style-type: none; 
+    width: 100%;
+}
+
+.topnav {
+    background-color: #262626;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style-type: none; 
 }
 
 .topnav a {
@@ -33,17 +49,36 @@ div {
     background-color: #2b2d30;
 }
 
+.botnav {
+    align-items: flex-end;
+    overflow: hidden;
+    width: 100%;
+    margin-right: 15px;
+    padding-right: 20px;
+}
+
+.botnav_text {
+    text-align: right;
+    color: white;
+}
+
 /* Columns */
 .left-column {
     float: left;
-    width: 60%;
+    width: 55%;
     border: 2px solid black;
+    margin-left: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 20px;
 }
 
-.right-column{
-    float: right;
-    width: 40%;
-    padding-right: 20px;
+.right-column {
+    margin-right: 50px;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    flex-grow: 1;
 }
 
 /* Titles */
@@ -53,17 +88,15 @@ div {
     background-color: #f2f2f2;
     padding: 0px;
     margin: 5px;
+    width: 100%;
 }
 
 /*Graphs*/
+.chart {
+    overflow: hidden;
+}
 
 /* Unique Boxes */
-@media screen and (max-width: 800px){
-    .left-column, .right_column {
-        width: 100%;
-        padding: 0px;
-    }
-}
 
 /* Miscellaneous */
 .medium_line {
@@ -79,4 +112,12 @@ div {
     background-color: whitesmoke;
     height: 600px;
     /* for now keep it like this but will change height to auto adjust when adding stonks */
+}
+
+#searchbar {
+    border: 2px solid black;
+    background-color: grey;
+    height: 40px;
+    font-size: 36px;
+    margin-bottom: 15px;
 }
