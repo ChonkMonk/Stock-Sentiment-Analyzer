@@ -9,7 +9,7 @@ if label is positive:
 """
 import pandas as pd
 from transformers import pipeline
-from web_scraper import web_scraper
+from backend.web_scraper import web_scraper
 
 class Sentiment_Analyzer:
     def __init__(self, weighting, model, tokenizer):

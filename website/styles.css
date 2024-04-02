@@ -1,0 +1,82 @@
+body {
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+/*Top Nav*/
+.topnav {
+    /* background-color: #585c63; */
+    background-color: #262626;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.topnav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: left;
+}
+.topnav a:hover{
+    background-color: #2b2d30;
+}
+
+/* Columns */
+.left-column {
+    float: left;
+    width: 60%;
+    border: 2px solid black;
+}
+
+.right-column{
+    float: right;
+    width: 40%;
+    padding-right: 20px;
+}
+
+/* Titles */
+.title {
+    text-align: center;
+    font-size: 72px;
+    background-color: #f2f2f2;
+    padding: 0px;
+    margin: 5px;
+}
+
+/*Graphs*/
+
+/* Unique Boxes */
+@media screen and (max-width: 800px){
+    .left-column, .right_column {
+        width: 100%;
+        padding: 0px;
+    }
+}
+
+/* Miscellaneous */
+.medium_line {
+    border: none;
+    height: 3px;
+    background-color: black;
+    margin: 15px;
+    /* width: 50%; */
+}
+
+#portfolio {
+    border: 2px solid black;
+    background-color: whitesmoke;
+    height: 600px;
+    /* for now keep it like this but will change height to auto adjust when adding stonks */
+}
