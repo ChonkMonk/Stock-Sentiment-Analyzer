@@ -83,6 +83,7 @@ div {
     margin-left: 20px;
     margin-bottom: 15px;
     flex-grow: 1;
+    overflow: hidden;
 }
 
 /* Titles */
@@ -102,7 +103,54 @@ div {
 }
 
 /* Tables */
+.table-container {
+    /* overflow-x: auto; */
+    overflow-y: auto;
+    white-space: nowrap;
+    width: 100%;
+    margin-right: 40px;
+    margin-left: 40px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
 
+.table-container table {
+    border-collapse: collapse;
+    width: auto;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    width: 100%;
+}
+
+tr {
+    display: table-row;
+    height: 40px;
+}
+
+thead th {
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    margin: 0;
+    height: 40px;
+}
+
+thead {
+    height: 40px;
+}
+
+.table-header {
+    background-color: rgb(207, 207, 207);
+    margin: 0;
+    height: 40px;
+}
+
+.portfolio-table {
+    height: 600px;
+}
+
+.portfolio-body {
+    height:560px
+}
 
 /* Miscellaneous */
 .medium_line {
@@ -113,17 +161,18 @@ div {
     /* width: 50%; */
 }
 
-#portfolio {
-    /* border: 2px solid black; */
+.medium-large-box {
+    border: 2px solid black;
     background-color: whitesmoke;
-    height: 600px;
-    /* for now keep it like this but will change height to auto adjust when adding stonks */
+    height: 450px;
 }
 
 #searchbar {
-    border: 2px solid black;
+    border: 1px solid black;
     background-color: grey;
     height: 40px;
-    font-size: 36px;
+    font-size: 24px;
+    padding: 5px;
     margin-bottom: 15px;
+    /* box-shadow: 0 0 4px rgba(0,0,0,0.4); */
 }
