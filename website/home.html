@@ -35,10 +35,13 @@
                 </div>
 
                 <div id = 'right column' class = 'right-column'>
-                    <div class="shadow-box">
-                        <div id = 'searchbar'>
-                        Search Bar Here
+                    <div>
+                        <div id = 'ticker-search' class="searchbar">
+                            <input type="text" id="ticker-search-input" placeholder="Enter a Ticker">
+                            <button onclick="search()">Search</button>
                         </div>
+                        <div id="searchResults"></div>
+                        <script src="script.js"></script>
                     </div>
 
                     <div class="other_table_container">
