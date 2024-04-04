@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name = 'viewport' content="width=device-width, initial-scale=1.0">
+        <title>Stats Stock!</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div id="topnav" class="navbar">
+                <div class="topnav">
+                    <a class="active" href="home.html" >Home</navbar>
+                    <a href="metrics.html">Metrics</navbar>
+                    <a href='s_an.html'>Sentiment Analysis</navbar>
+                    </a>
+                </div>
+            </div>
+
+            <div id = 'title' class = 'title'>
+                    Portfolio
+                    <hr class='medium_line'>
+            </div>
+
+            <div id = 'chart and stats' class="container">
+                <div id = 'chart' class = 'left-column'>
+                    <div class="shadow-box">
+                        <div id = 'one-year' class = 'chart'>
+                            <div>
+                                <img src = 'images\Cool_graph_test.png' alt = 'Cool Graph'>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+
+                <div id = 'right column' class = 'right-column'>
+                    <div>
+                        <div id = 'ticker-search' class="searchbar">
+                            <input type="text" id="ticker-search-input" placeholder="Enter a Ticker">
+                            <button onclick="search()">Search</button>
+                        </div>
+                        <div id="searchResults"></div>
+                        <script src="script.js"></script>
+                    </div>
+
+                    <div class="other_table_container">
+                        <!-- <table id="stats-breakdown" class="medium-large-box">
+                            <thead class="table-header">
+                                <tr>
+                                    <th>
+                                        <a>Sharpe Ratio!</a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <a>Beta!</a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <a>Alpha!</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table> -->
+                        <div class="medium-large-box">
+                            *More stuff here later!*
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id = 'portfolio-table' class="portfolio-table">
+                    <thead class = 'table-header'>
+                        <tr>
+                            <th>
+                                <a>Symbol</a>
+                            </th>
+                            <th>
+                                <a>Quantity</a>
+                            </th>
+                            <th>
+                                <a>Price Paid</a>
+                            </th>
+                            <th>
+                                <a>Last Closing Price</a>
+                            </th>
+                            <th>
+                                <a>Profit/Loss</a>
+                            </th>
+                            <th>
+                                <a>Profit/Loss %</a>
+                            </th>
+                            <th>
+                                <a>Value</a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="portfolio-body">
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="Bot Bar" class = "navbar">
+                <div class = 'botnav'>
+                    <p class = 'botnav_text'>
+                        Made with Love by Richard Hong
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
