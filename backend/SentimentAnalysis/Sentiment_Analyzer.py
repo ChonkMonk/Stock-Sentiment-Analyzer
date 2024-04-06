@@ -6,10 +6,16 @@ if label is neutral:
     total score no change
 if label is positive:
     total score += positive score
+
+
+New 3 AM revelations:
+    Turn the final thing into a standard normal distribution for each sentiment analyzer
+        Trial and error to see which one has the best shape (not standardized)
+            ie trying the weights by day, trying the weights by article etc.
 """
 import pandas as pd
 from transformers import pipeline
-from backend.web_scraper import web_scraper
+from web_scraper import web_scraper
 
 class Sentiment_Analyzer:
     def __init__(self, weighting, model, tokenizer):

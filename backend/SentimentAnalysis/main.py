@@ -6,9 +6,9 @@ Use ML to adjust weights such that it fits stock price data?
 Weight based on mean for every article rather than by day
 Weightings still really bad
 """
-from backend.Sentiment_Analyzer import Sentiment_Analyzer
+from Sentiment_Analyzer import Sentiment_Analyzer
 from transformers import BertTokenizer, BertForSequenceClassification, AutoTokenizer, AutoModelForSequenceClassification
-from backend.web_scraper import web_scraper
+from web_scraper import web_scraper
 
 model1 = BertForSequenceClassification.from_pretrained("ProsusAI/finbert",num_labels=3)
 tokenizer1 = BertTokenizer.from_pretrained("ProsusAI/finbert")
