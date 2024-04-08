@@ -10,7 +10,8 @@ class Portfolio:
         self.total_current_prices = total_current_prices
         self.weightings = weightings
         self.portfolio_value = portfolio_value
-
+        self.portfolio_data  = 0 # temp, need pandas dataframe
+        
     def __repr__(self):
         return self.current_prices
 
@@ -50,3 +51,5 @@ class Portfolio:
         for tk in self.ticker_list:
             # updates weight
             self.weightings[tk] = self.total_current_prices[tk] / self.portfolio_value
+
+    # Also find how portfolio evolves so data for close and stuff for whole portfolio

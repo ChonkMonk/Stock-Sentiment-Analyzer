@@ -1,0 +1,12 @@
+ticker_list = ['NVDA', 'MSFT', 'ORCL', 'TSM', 'AVGO', 'ASML', 'AMD', 'CRM', 'ADBE', 'AAPL',
+               'JPM', 'BAC', 'WFC', 'AXP', 'BX', 'MS', 'HSBC', 'RY', 'MA', 'V',
+               'LLY', 'NVO', 'UNH', 'JNJ', 'ABBV', 'MRK', 'TMO', 'AZN', 'ABT', 'NVS',
+                'GE', 'CAT', 'UNP', 'UPS', 'HON','RTX','ETN','DE','BA','LMT',
+                'AMZN', 'TSLA', 'HD', 'TM', 'MCD','BABA','PDD','LOW','NKE','BKNG',
+                'LIN', 'BHP', 'RIO', 'SHW', 'SCCO','FCX','ECL','CRH','APD','VALE',
+                'PLD', 'AMT', 'EQIX', 'SPG', 'WELL','PSA','O','DLR','CCI','CSGP',
+                'GOOGL', 'META', 'NFLX', 'DIS', 'TMUS','VZ','CMCSA','T','RELX','SPOT',
+                'XOM', 'CVX', 'SHEL', 'TTE', 'COP','BP','PBR','CNQ','EQNR','MPC',
+                'WMT', 'PG', 'COST', 'KO', 'PEP','PM','BUD','UL','MDLZ','DEO',
+                'NEE', 'SO', 'DUK', 'CEG', 'NGG','SRE','AEP','D','EXC','PCG',
+               ]
