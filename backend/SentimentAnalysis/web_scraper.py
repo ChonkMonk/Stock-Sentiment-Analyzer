@@ -45,3 +45,6 @@ def web_scraper():
     df = pd.DataFrame(parsed_data, columns = ['ticker', 'date', 'time', 'title'])
     df['date'] = pd.to_datetime(df['date']).dt.date
     return df, ticker
+
+if __name__ == '__main__':
+    web_scraper()

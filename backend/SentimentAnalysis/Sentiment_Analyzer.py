@@ -20,13 +20,13 @@ from transformers import pipeline
 from web_scraper import web_scraper
 
 class Sentiment_Analyzer:
-    def __init__(self, weighting, model, tokenizer, stdev, mean):
+    def __init__(self, weighting, model, tokenizer):
         self.weight = weighting
         self.model = model
         self.tokenizer = tokenizer
         self.nlp = pipeline("sentiment-analysis",model = self.model, tokenizer = self.tokenizer)
-        self.stdev = stdev
-        self.mean = mean
+        # self.stdev = stdev
+        # self.mean = mean
 
     def sentiment_label(self, title, nlp):
         results = nlp(title)
